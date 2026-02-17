@@ -1,0 +1,22 @@
+# secrets
+.env
+!.env.example
+secrets/
+
+# runtime data
+data/
+*.sqlite3
+*.db
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# ide
+.idea/
+.vscode/
+
+# os
+.DS_Store
+Thumbs.db
