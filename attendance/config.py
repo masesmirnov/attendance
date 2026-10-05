@@ -24,7 +24,7 @@ class Settings(BaseSettings):
 
     # OpenAI
     openai_api_key: SecretStr
-    openai_model: str = "gpt-5.2"
+    openai_model: str = "gpt-6-luna"
     openai_store: bool = False
 
     # Google Service Account
