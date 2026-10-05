@@ -19,6 +19,10 @@ Admin access: email smmaximss@gmail.com
 
 3) Share the target Google Sheet with the service account email as Editor.
 
+Excel files (.xlsx) kept in Google Drive work too: the bot downloads the file, sets the marks
+and uploads it back. That needs the Google Drive API enabled next to the Sheets API, and
+images or charts inside such a file do not survive the round trip.
+
 ## Run
 
 ```bash
