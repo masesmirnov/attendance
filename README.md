@@ -1,4 +1,4 @@
-# Zoom Attendance Bot
+# attendance
 
 Telegram bot for marking attendance in Google Sheets based on a Zoom Participants screenshot.
 
@@ -22,7 +22,7 @@ Admin access: email smmaximss@gmail.com
 ## Run
 
 ```bash
-python -m zoom_attendance_bot
+python -m attendance
 ```
 
 ## Commands

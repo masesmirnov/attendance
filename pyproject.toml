@@ -1,5 +1,5 @@
 [project]
-name = "zoom-attendance-bot"
+name = "attendance"
 version = "1.0.0"
 description = "Telegram bot: Zoom attendance -> Google Sheets"
 readme = "README.md"
