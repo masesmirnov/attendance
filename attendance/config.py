@@ -38,6 +38,8 @@ class Settings(BaseSettings):
     worksheet_name: str
     roster_name_col: str
     roster_start_row: int
+    present_mark: str = "1"
+    absent_mark: str | None = None
 
     # Access
     admin_ids: set[int] | None = None
@@ -68,6 +70,11 @@ class Settings(BaseSettings):
     @field_validator("default_sheet_id", mode="before")
     @classmethod
     def _empty_sheet_id_to_none(cls, v: Any) -> str | None:
+        return strip_or_none(v)
+
+    @field_validator("present_mark", "absent_mark", mode="before")
+    @classmethod
+    def _strip_marks(cls, v: Any) -> str | None:
         return strip_or_none(v)
 
     @field_validator("roster_name_col", mode="before")

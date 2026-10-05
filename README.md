@@ -44,6 +44,7 @@ in `runtime/` and survives redeploys.
 | `google_service_account` | Service account JSON key, pasted as an object |
 | `worksheet_name`, `roster_name_col`, `roster_start_row` | Roster location, as in `.env` |
 | `default_sheet_id` | Optional default spreadsheet |
+| `present_mark`, `absent_mark` | Optional marks for present and absent students: `1` and none by default, `П` and `Н` for a sheet that counts those |
 | `openai_model` | Optional, `gpt-6-luna` by default (`openai/gpt-6-luna` on OpenRouter) |
 | `admin_ids` | Optional comma-separated Telegram IDs; without it the bot answers everyone |
 

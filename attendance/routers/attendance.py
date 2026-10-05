@@ -216,18 +216,23 @@ async def apply_column(
         await message.answer(f"Не смог прочитать колонку {col}: {html.escape(str(e))}")
         return
 
+    present = settings.present_mark
+    absent = settings.absent_mark
     updated = list(current_vals)
     changed = 0
+    absent_changed = 0
 
     for entry in roster_entries:
         row = int(entry["row"])
         name = str(entry["name"]).strip()
-
-        if int(simple.get(name, 0)) != 1:
-            continue
-
         idx = row - start_row
         cur = updated[idx]
+
+        if int(simple.get(name, 0)) != 1:
+            if absent and str(cur).strip() == "":
+                updated[idx] = absent
+                absent_changed += 1
+            continue
 
         try:
             cur_num = float(str(cur).replace(",", "."))
@@ -237,8 +242,8 @@ async def apply_column(
         if cur_num >= 2:
             continue
 
-        if str(cur).strip() != "1":
-            updated[idx] = 1
+        if str(cur).strip() != present:
+            updated[idx] = int(present) if present.isdigit() else present
             changed += 1
 
     try:
@@ -255,5 +260,8 @@ async def apply_column(
         await message.answer(f"Не смог записать в таблицу: {html.escape(str(e))}")
         return
 
-    await message.answer(f"✅ Готово. Вписал 1 в колонку {col} для {changed} студентов.")
+    summary = f"✅ Готово. Вписал {present} в колонку {col} для {changed} студентов"
+    if absent:
+        summary += f", {absent} — для {absent_changed}"
+    await message.answer(summary + ".")
     await state.clear()

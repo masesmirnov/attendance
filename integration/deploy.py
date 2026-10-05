@@ -33,6 +33,8 @@ VARIABLES = {
     "worksheet_name": "WORKSHEET_NAME",
     "roster_name_col": "ROSTER_NAME_COL",
     "roster_start_row": "ROSTER_START_ROW",
+    "present_mark": "PRESENT_MARK",
+    "absent_mark": "ABSENT_MARK",
     "admin_ids": "ADMIN_IDS",
 }
 
