@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import html
 import json
 import logging
 from typing import Any
@@ -75,7 +76,7 @@ async def _process_image(
         )
     except Exception as e:
         logger.exception("Failed to load roster from Google Sheets")
-        await message.answer(f"Не смог прочитать реестр из таблицы: {e}")
+        await message.answer(f"Не смог прочитать реестр из таблицы: {html.escape(str(e))}")
         return
 
     if not roster_entries:
@@ -89,7 +90,7 @@ async def _process_image(
         simple = attendance_llm.marks_to_map(raw, roster)
     except Exception as e:
         logger.exception("OpenAI attendance analyze failed")
-        await message.answer(f"Ошибка OpenAI: {e}")
+        await message.answer(f"Ошибка OpenAI: {html.escape(str(e))}")
         return
 
     await state.update_data(
@@ -212,7 +213,7 @@ async def apply_column(
         )
     except Exception as e:
         logger.exception("Failed to read column values")
-        await message.answer(f"Не смог прочитать колонку {col}: {e}")
+        await message.answer(f"Не смог прочитать колонку {col}: {html.escape(str(e))}")
         return
 
     updated = list(current_vals)
@@ -251,7 +252,7 @@ async def apply_column(
         )
     except Exception as e:
         logger.exception("Failed to write column values")
-        await message.answer(f"Не смог записать в таблицу: {e}")
+        await message.answer(f"Не смог записать в таблицу: {html.escape(str(e))}")
         return
 
     await message.answer(f"✅ Готово. Вписал 1 в колонку {col} для {changed} студентов.")
