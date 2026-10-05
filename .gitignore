@@ -2,9 +2,11 @@
 .env
 !.env.example
 secrets/
+service_account.json
 
 # runtime data
 data/
+runtime/
 *.sqlite3
 *.db
 

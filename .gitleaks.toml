@@ -1,0 +1,5 @@
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Generated build and dependency caches"
+paths = ['''^\.cache/''', '''^\.venv/''', '''^dist/''']

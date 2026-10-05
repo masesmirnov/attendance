@@ -1,0 +1,9 @@
+.git
+.venv
+data
+runtime
+secrets
+service_account.json
+__pycache__
+*.pyc
+.env

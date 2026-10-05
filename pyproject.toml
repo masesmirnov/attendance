@@ -12,3 +12,6 @@ dependencies = [
   "pydantic-settings>=2.15.0",
   "aiosqlite>=0.22.1"
 ]
+
+[tool.setuptools.packages.find]
+include = ["attendance*"]

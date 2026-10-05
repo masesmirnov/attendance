@@ -2,7 +2,7 @@
 
 Telegram bot for marking attendance in Google Sheets based on a Zoom Participants screenshot.
 
-Bot: @zoom_attendance_helper_bot  
+Bot: @AttendoraBot  
 Admin access: email smmaximss@gmail.com
 
 ## Setup
@@ -24,6 +24,24 @@ Admin access: email smmaximss@gmail.com
 ```bash
 python -m attendance
 ```
+
+## Deployment
+
+The bot runs on `main` as the `attendance` component of infra: long polling, no ports.
+On apply, `integration/deploy.py` takes the `attendance` object from SOPS, renders `.env`
+and the service account file, and starts the container. The user → sheet database lives
+in `runtime/` and survives redeploys.
+
+| SOPS key | Value |
+| --- | --- |
+| `bot_token` | Telegram bot token |
+| `openai_api_key` | OpenAI API key |
+| `openai_base_url` | Optional, `https://openrouter.ai/api/v1` to go through OpenRouter |
+| `google_service_account` | Service account JSON key, pasted as an object |
+| `worksheet_name`, `roster_name_col`, `roster_start_row` | Roster location, as in `.env` |
+| `default_sheet_id` | Optional default spreadsheet |
+| `openai_model` | Optional, `gpt-6-luna` by default (`openai/gpt-6-luna` on OpenRouter) |
+| `admin_ids` | Optional comma-separated Telegram IDs; without it the bot answers everyone |
 
 ## Commands
 - /start

@@ -1,0 +1,33 @@
+services:
+  bot:
+    build: .
+    image: attendance/bot:1.0.0
+    container_name: attendance-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      GOOGLE_SERVICE_ACCOUNT_FILE: /run/secrets/google
+      USER_SHEET_DB_PATH: /data/user_sheets.sqlite3
+    secrets:
+      - google
+    volumes:
+      - ./runtime:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 64
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+secrets:
+  google:
+    file: ./service_account.json
