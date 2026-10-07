@@ -30,7 +30,7 @@ async def cmd_sheet(message: Message, state: FSMContext, user_sheets: SQLiteUser
         await user_sheets.set_sheet_id(user_id, sheet_id)
         await state.clear()
         await state.set_state(Flow.waiting_image)
-        await message.answer("✅ Сохранил ID таблицы.\nТеперь пришли скриншот Zoom (Participants).")
+        await message.answer("✅ Сохранил ID таблицы.\nТеперь пришли скриншот с присутствующими.")
         return
 
     current = await user_sheets.get_sheet_id(user_id)
@@ -55,4 +55,4 @@ async def handle_sheet_id(message: Message, state: FSMContext, user_sheets: SQLi
     await user_sheets.set_sheet_id(user_id, sheet_id)
     await state.clear()
     await state.set_state(Flow.waiting_image)
-    await message.answer("✅ Сохранил ID таблицы.\nТеперь пришли скриншот Zoom (Participants).")
+    await message.answer("✅ Сохранил ID таблицы.\nТеперь пришли скриншот с присутствующими.")

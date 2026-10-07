@@ -1,6 +1,7 @@
 # attendance
 
-Telegram bot for marking attendance in Google Sheets based on a Zoom Participants screenshot.
+Telegram bot for marking attendance in Google Sheets from a screenshot of who is present:
+a call's participant list, a chat, a written list.
 
 Bot: @AttendoraBot  
 Admin access: email smmaximss@gmail.com

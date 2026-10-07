@@ -43,7 +43,7 @@ async def cmd_start(
 
     await state.set_state(Flow.waiting_image)
     await message.answer(
-        "Пришли скриншот Zoom (окно Participants).\n"
+        "Пришли скриншот, где видно присутствующих: участники созвона, чат, список — откуда угодно.\n"
         "Я верну JSON (имя → 0/1). Потом подтвердишь и укажешь колонку.\n\n"
         "Сменить таблицу: /sheet"
     )
@@ -54,7 +54,7 @@ async def cmd_help(message: Message, settings: Settings) -> None:
     await message.answer(
         "Как пользоваться:\n"
         "1) /start\n"
-        "2) пришли скриншот Participants (как фото или image-файл)\n"
+        "2) пришли скриншот с присутствующими (как фото или image-файл)\n"
         "3) получишь JSON\n"
         "4) нажми «Применить» и укажи колонку (например S или AA)\n\n"
         "/sheet — показать/сменить таблицу\n"

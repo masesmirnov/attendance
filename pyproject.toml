@@ -1,7 +1,7 @@
 [project]
 name = "attendance"
 version = "1.0.0"
-description = "Telegram bot: Zoom attendance -> Google Sheets"
+description = "Telegram bot: attendance from a screenshot -> Google Sheets"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
